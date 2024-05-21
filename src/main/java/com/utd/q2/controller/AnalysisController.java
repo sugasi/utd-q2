@@ -1,6 +1,7 @@
 package com.utd.q2.controller;
 
 
+import com.utd.q2.data.entity.Product;
 import com.utd.q2.service.reload.ReloadService;
 import com.utd.q2.service.revenue.RevenueService;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @Setter
@@ -51,6 +53,11 @@ public class AnalysisController {
         } else {
             return ResponseEntity.ok("There is no recorded activity in the provided region for the requested product");
         }
+    }
+
+    @GetMapping("/analysis/topProducts/{n}")
+    public ResponseEntity<List<Product>> topProducts(@RequestParam LocalDate from, @RequestParam LocalDate to, @PathVariable int n) {
+        List<Product> products =
     }
 
 }
